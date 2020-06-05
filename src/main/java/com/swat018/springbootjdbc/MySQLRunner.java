@@ -1,4 +1,3 @@
-/*
 package com.swat018.springbootjdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 @Component
-public class H2Runner implements ApplicationRunner {
+public class MySQLRunner implements ApplicationRunner {
 
     @Autowired
     DataSource dataSource;
@@ -23,6 +22,7 @@ public class H2Runner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         try(Connection connection = dataSource.getConnection()) {
+            System.out.println(dataSource.getClass());
             System.out.println(connection.getMetaData().getURL());
             System.out.println(connection.getMetaData().getUserName());
 
@@ -31,6 +31,6 @@ public class H2Runner implements ApplicationRunner {
             statement.executeUpdate(sql);
         }
         jdbcTemplate.execute("INSERT INTO USER VALUES (1, 'jinwoo')");
+
     }
 }
-*/
